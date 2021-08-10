@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --main-color: #111217;
+    --color-dark: #181B1F;
+    --dull-grey: #282A2F;
+    --text-grey: #BEBEBE;
+    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    width: 100vh;
+    overflow: hidden;
+    background: var(--main-color);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* width: 240px; */
+    width: 78px;
+    padding: 6px 14px;
+    background: var(--color-dark);
+    transition: all 0.5s ease;
+}
+
+.sidebar.active {
+    width: 240px;
+}
+
+.sidebar.active .logo_content .logo {
+    opacity: 1;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.sidebar .logo_content .logo {
+    color: var(--text-grey);
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .1s ease;
+}
+
+.logo_content .logo i {
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+.logo_content .logo .logo_name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sidebar .profile_content {
+    position: absolute;
+    color: var(--text-grey);
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.sidebar .profile_content .profile {
+    position: relative;
+    padding: 10px 6px;
+    height: 180px;
+    width: 100%;
+    /* background: var(--dull-grey); */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.sidebar.active .profile_content .profile {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.profile_content .profile .profile_details {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap; 
+}
+
+.sidebar.active .profile .profile_details {
+    opacity: 1;
+    pointer-events: auto;
+
+}
+
+.profile .profile_details img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 0 10px;
+    border:1px solid var(--text-grey);
+    
+}
+
+.profile .name_job {
+    margin: 5px 10px;
+}
+.profile .name_job .name {
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .profile .name_job .name {
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.profile .name_job .job {
+    font-size: 6px;
+    font-weight: 100;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .profile .name_job .job {
+    font-size: 10px;
+    font-weight: 200;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.btn_area {
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.btn_area button {
+
+    width: 20%; height: 20px;
+    background: var(--dull-grey);
+    color: var(--text-grey);
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border:1px solid var(--text-grey);
+    min-width: 50px;
+    line-height: 20px;
+    transform: translateX(5%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+.sidebar.active .btn_area button {
+    opacity: 1;
+    pointer-events: auto;
+    background: var(--color-dark);
+}
+.sidebar #btn {
+    position: absolute;
+    /* left: 90%; */
+    left: 50%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+    color: var(--text-grey);
+    
+}
+
+.sidebar.active #btn {
+    left: 90%;
+}
+
+.sidebar ul {
+    margin-top: 300px;
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    /* margin: 0 5px; */
+    list-style:none;
+    line-height: 50px;
+}
+
+.sidebar ul li .tooltip {
+    position: absolute;
+    left: 122px;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    height: 35px;
+    width: 122px;
+    background: var(--text-grey);
+    box-shadow: 0 0 15px 0 #050505;
+    line-height: 35px;
+    border-radius: 6px;
+    text-align: center;
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+
+.sidebar.active ul li .tooltip {
+    display: none;
+}
+
+.sidebar ul li:hover .tooltip{
+    transition: all 0.5s ease;
+    opacity: 1;
+    top: 50%;
+}
+
+.sidebar ul li a {
+    color: var(--text-grey);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.sidebar ul li a:hover {
+    color: var(--text-grey);
+    background: var(--dull-grey);
+    width: 100%;
+}
+
+.sidebar ul li a i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    padding-left: 17px;
+}
+
+.sidebar .links_name {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active .links_name {
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+.home_content {
+    position: absolute;
+    height: 25px;
+    width: calc(100%-78px);
+    left: 78px;
+    transition: all 0.5s ease;
+}
+
+.home_content .text {
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-grey);
+    margin: 12px;
+
+}
+
+.sidebar.active ~ .home_content {
+    width: calc(100%-240px);
+    left: 240px;
+}
+/* top: 100px; */
+.Usage_1 {
+    width: 470px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_2 {
+    width: 470px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 572px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_3 {
+    width: 470px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 1054px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .Usage_1 {
+    width: 417px;
+    left: 252px;
+}
+
+.sidebar.active ~ .Usage_2 {
+    width: 417px;
+    left: 681px;
+}
+
+.sidebar.active ~ .Usage_3 {
+    width: 416px;
+    left: 1110px;
+}
+
+.Stream_1 {
+    width: 1436px;
+    height: 200px;
+    position: absolute;
+    top: 296px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .Stream_1 {
+    width: 1274px;
+    left: 252px;
+}
+
+.Stream_2 {
+    width: 1436px;
+    height: 200px;
+    position: absolute;
+    top: 508px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .Stream_2 {
+    width: 1274px;
+    left: 252px;
+}

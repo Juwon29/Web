@@ -1,0 +1,749 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --main-color: #111217;
+    --color-dark: #181B1F;
+    --dull-grey: #282A2F;
+    --text-grey: #BEBEBE;
+    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    position: relative;
+    min-height: 100vh;
+    width: 100;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--main-color);
+}
+
+.sidebar {
+    /* position: fixed; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* width: 240px; */
+    width: 78px;
+    padding: 6px 14px;
+    background: var(--color-dark);
+    transition: all 0.5s ease;
+    z-index: 5;
+}
+
+.sidebar.active {
+    width: 240px;
+}
+
+.sidebar.active .logo_content .logo {
+    opacity: 1;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.sidebar .logo_content .logo {
+    color: var(--text-grey);
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .1s ease;
+}
+
+.logo_content .logo i {
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+.logo_content .logo .logo_name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sidebar .profile_content {
+    position: absolute;
+    color: var(--text-grey);
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.sidebar .profile_content .profile {
+    position: relative;
+    padding: 10px 6px;
+    height: 180px;
+    width: 100%;
+    /* background: var(--dull-grey); */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.sidebar.active .profile_content .profile {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.profile_content .profile .profile_details {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap; 
+}
+
+.sidebar.active .profile .profile_details {
+    opacity: 1;
+    pointer-events: auto;
+
+}
+
+.profile .profile_details img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 0 10px;
+    border:1px solid var(--text-grey);
+    
+}
+
+.profile .name_job {
+    margin: 5px 10px;
+}
+.profile .name_job .name {
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .profile .name_job .name {
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.profile .name_job .job {
+    font-size: 6px;
+    font-weight: 100;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .profile .name_job .job {
+    font-size: 10px;
+    font-weight: 200;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.btn_area {
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 4;
+}
+.btn_area button {
+    width: 20%; height: 20px;
+    background: var(--dull-grey);
+    color: var(--text-grey);
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border:1px solid var(--text-grey);
+    min-width: 50px;
+    line-height: 20px;
+    transform: translateX(5%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+.sidebar.active .btn_area button {
+    opacity: 1;
+    pointer-events: auto;
+    background: var(--color-dark);
+}
+.sidebar #btn {
+    position: absolute;
+    /* left: 90%; */
+    left: 50%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+    color: var(--text-grey);
+    
+}
+
+.sidebar.active #btn {
+    left: 90%;
+}
+
+.sidebar ul {
+    margin-top: 300px;
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    /* margin: 0 5px; */
+    list-style:none;
+    line-height: 50px;
+}
+
+.sidebar ul li .tooltip {
+    position: absolute;
+    left: 122px;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    height: 35px;
+    width: 122px;
+    background: var(--text-grey);
+    box-shadow: 0 0 15px 0 #050505;
+    line-height: 35px;
+    border-radius: 6px;
+    text-align: center;
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    z-index: 20;
+}
+
+.sidebar.active ul li .tooltip {
+    display: none;
+}
+
+.sidebar ul li:hover .tooltip{
+    transition: all 0.5s ease;
+    opacity: 1;
+    top: 50%;
+
+}
+
+.sidebar ul li a {
+    color: var(--text-grey);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+.sidebar ul li a button {
+    color: var(--text-grey);
+    background: var(--dull-grey);
+}
+
+.sidebar ul li a:hover {
+    color: var(--text-grey);
+    background: var(--dull-grey);
+    width: 100%;
+}
+
+.sidebar ul li a i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    padding-left: 17px;
+}
+
+.modal_pannel {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal_pannel.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal {
+    background-color: var(--text-grey);
+    box-shadow: rgba(20, 20, 20, 0.2);
+    width: 500px;
+    border-radius: 5px;
+    padding: 50px 50px;
+    max-width: 100%;
+}
+
+.upload_modal_container {
+    position: relative;
+    top: 40px;
+    height: 50px;
+    width: 100%;
+    list-style:none;
+    line-height: 50px;
+}
+
+.upload_modal_container .upload .upload_details a{
+    color: var(--text-grey);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.upload_modal_container .upload .upload_details a:hover {
+    color: var(--text-grey);
+    background: var(--dull-grey);
+    width: 100%;
+}
+
+.upload_modal_container .upload .upload_details a i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    padding-left: 17px;
+}
+
+.open_modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active .open_modal {
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+.sidebar .links_name {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active .links_name {
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+.home_content {
+    position: absolute;
+    height: 25px;
+    width: calc(100%-78px);
+    left: 78px;
+    transition: all 0.5s ease;
+}
+
+.home_content .text {
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-grey);
+    margin: 12px;
+
+}
+
+.sidebar.active ~ .home_content {
+    width: calc(100%-240px);
+    left: 240px;
+}
+/* top: 100px; */
+.MUsage_1 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.MUsage_2 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 454px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.MUsage_3 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 818px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.MUsage_4 {
+    width: 349px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 1182px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_1 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_2 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 454px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_3 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 818px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_4 {
+    width: 349px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 1182px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+.Usage_5 {
+    width: 349px;
+    height: 200px;
+    position: absolute;
+    top: 296px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_6 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 296px;
+    left: 454px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_7 {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 296px;
+    left: 818px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Usage_8 {
+    width: 349px;
+    height: 200px;
+    position: absolute;
+    top: 296px;
+    left: 1182px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+
+.sidebar.active ~ .Mainboard .MUsage_1 {
+    width: 299px;
+    left: 252px;
+}
+
+.sidebar.active ~ .Mainboard .MUsage_2 {
+    width: 299px;
+    left: 563px;
+}
+
+.sidebar.active ~ .Mainboard .MUsage_3 {
+    width: 298px;
+    left: 874px;
+}
+
+.sidebar.active ~ .Mainboard .MUsage_4 {
+    width: 298px;
+    left: 1185px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_1 {
+    width: 299px;
+    left: 252px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_2 {
+    width: 299px;
+    left: 563px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_3 {
+    width: 298px;
+    left: 874px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_4 {
+    width: 298px;
+    left: 1185px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_5 {
+    width: 299px;
+    left: 252px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_6 {
+    width: 299px;
+    left: 563px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_7 {
+    width: 298px;
+    left: 874px;
+}
+
+.sidebar.active ~ .UsageCapacity .Usage_8 {
+    width: 298px;
+    left: 1185px;
+}
+.MStream_1 {
+    width: 1436px;
+    height: 400px;
+    position: absolute;
+    top: 296px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+/*.MStream_2 {
+    width: 1436px;
+    height: 200px;
+    position: absolute;
+    top: 508px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}*/
+.Stream_1 {
+    width: 714px;
+    height: 200px;
+    position: absolute;
+    top: 508px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Stream_2 {
+    width: 708px;
+    height: 200px;
+    position: absolute;
+    top: 508px;
+    left: 818px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Stream_3 {
+    width: 714px;
+    height: 200px;
+    position: absolute;
+    top: 720px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.Stream_4 {
+    width: 708px;
+    height: 200px;
+    position: absolute;
+    top: 720px;
+    left: 818px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .Mainboard .MStream_1 {
+    width: 1274px;
+    left: 252px;
+}
+
+
+/*.sidebar.active ~ .Mainboard .MStream_2 {
+    width: 1274px;
+    left: 252px;
+}*/
+.sidebar.active ~ .UsageCapacity .Stream_1 {
+    width: 646px;
+    left: 252px;
+}
+
+.sidebar.active ~ .UsageCapacity .Stream_2 {
+    width: 646px;
+    left: 874px;
+}
+
+.sidebar.active ~ .UsageCapacity .Stream_3 {
+    width: 646px;
+    left: 252px;
+}
+
+.sidebar.active ~ .UsageCapacity .Stream_4 {
+    width: 646px;
+    left: 874px;
+}
+
+.Uploaduse {
+    width: 352px;
+    height: 200px;
+    position: absolute;
+    top: 84px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .FileUpload .Uploaduse {
+    width: 299px;
+    left: 252px;
+}
+
+.LStream_1 {
+    width: 714px;
+    height: 400px;
+    position: absolute;
+    top: 108px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.LStream_2 {
+    width: 308px;
+    height: 400px;
+    position: absolute;
+    top: 108px;
+    left: 1220px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.LStream_3 {
+    width: 350px;
+    height: 195px;
+    position: absolute;
+    top: 108px;
+    left: 814px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.LStream_6 {
+    width: 195px;
+    height: 195px;
+    position: absolute;
+    top: 308px;
+    left: 1019px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.LStream_5 {
+    width: 195px;
+    height: 195px;
+    position: absolute;
+    top: 308px;
+    left: 814px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.LStream_4 {
+    width: 1120px;
+    height: 500px;
+    position: absolute;
+    top: 520px;
+    left: 90px;
+    background-color: var(--color-dark);
+    border-radius: 10px 10px 10px 10px;
+    transition: all 0.5s ease;
+}
+.sidebar.active ~ .LiveStreaming .LStream_1 {
+    width: 646px;
+    left: 252px;
+}
+
+.sidebar.active ~ .LiveStreaming .LStream_2 {
+    width: 240px;
+    left: 1314px;
+}
+
+.sidebar.active ~ .LiveStreaming .LStream_3 {
+    width: 338px;
+    left: 966px;
+}
+.sidebar.active ~ .LiveStreaming .LStream_6 {
+    width: 338px;
+    left: 966px;
+}
+.sidebar.active ~ .LiveStreaming .LStream_5 {
+    width: 338px;
+    left: 966px;
+}
+
+.sidebar.active ~ .LiveStreaming .LStream_4 {
+    width: 1274px;
+    left: 252px;
+}
